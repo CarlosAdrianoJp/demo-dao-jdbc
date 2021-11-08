@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,7 +26,42 @@ public class VendedorDaoJDBC  implements VendedorDao{
 
 	@Override
 	public void inserir(Vendedor obj) {
-		// TODO Auto-generated method stub
+		PreparedStatement st = null;
+		try {
+			st = conn.prepareStatement(
+					"INSERT INTO seller "
+					+ "(Name, Email, BirthDate, BaseSalary, DepartmentId) "
+					+ "VALUES " 
+					+ "(?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+			st.setString(1, obj.getNome());
+			st.setString(2, obj.getEmail());
+			st.setDate(3, new java.sql.Date(obj.getDataNiver().getTime()));
+			st.setDouble(4, obj.getSalarioBase());
+			st.setInt(5, obj.getDepartamento().getId());
+			
+			int linhasAfetadas = st.executeUpdate();
+			
+			// se esse if der certo quer dizer que ele add 
+			// e que o mysql add umid que nao sei qual e
+			if(linhasAfetadas > 0) {
+				// ele pega u result set e pega o id que foi criado automaticamente e coloca na rs
+				ResultSet rs = st.getGeneratedKeys();
+				if(rs.next()) {
+					// vale lembrar que esse 1 referese ao resut setque pegou o id
+					// nao e o 1 que adiciona um novo vendedor
+					int id = rs.getInt(1);
+					obj.setId(id);
+				}
+				DB.closeResultSet(rs);
+			}
+			else {
+				throw new DbException("erro no sistema nao conseguiu adicionar o vendedor.");
+			}
+		}catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		}finally {
+			DB.closeStatement(st);
+		}
 		
 	}
 
