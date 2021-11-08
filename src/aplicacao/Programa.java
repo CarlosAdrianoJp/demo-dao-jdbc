@@ -41,5 +41,19 @@ public class Programa {
 		Vendedor novoVendedor = new Vendedor(null, "Greg", "greg@gmail.com", new Date(), 5000.0, depart);
 		vendedorDao.inserir(novoVendedor);
 		System.out.println("Inserido id do vendedor : " + novoVendedor.getId());
+		
+		
+		
+		System.out.println("\n=== teste 5 vendedor - atualizando dados do vendedor ===");
+		vendedor = vendedorDao.encontrePeloId(1);
+		vendedor.setNome("Bruce Wayne");
+		vendedorDao.atualizar(vendedor);
+		System.out.println("Atualizacao concluida verifique o workbench");
+		
 	}
+	
+
+	
+	
+	
 }
