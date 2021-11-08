@@ -2,6 +2,7 @@ package aplicacao;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import model.dao.DaoFactory;
 import model.dao.VendedorDao;
@@ -11,6 +12,7 @@ import model.entities.Vendedor;
 public class Programa {
 
 	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
 
 		//Departamento obj = new Departamento(1, "livros");
 
@@ -49,6 +51,19 @@ public class Programa {
 		vendedor.setNome("Bruce Wayne");
 		vendedorDao.atualizar(vendedor);
 		System.out.println("Atualizacao concluida verifique o workbench");
+		
+		System.out.println("\n=== teste 6 vendedor - deletar vendedor ===");
+		System.out.println("Entre com o id do vendedor para excluir");
+		int id = in.nextInt();
+		vendedorDao.deletePeloId(id);
+		System.out.println("Deletado com sucesso");
+		
+		
+		
+		
+		in.close();
+
+		
 		
 	}
 	
