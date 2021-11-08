@@ -1,10 +1,9 @@
 package aplicacao;
 
-import java.util.Date;
+import java.util.List;
 
 import model.dao.DaoFactory;
 import model.dao.VendedorDao;
-import model.dao.impl.VendedorDaoJDBC;
 import model.entities.Departamento;
 import model.entities.Vendedor;
 
@@ -23,5 +22,14 @@ public class Programa {
 		Vendedor vendedor =  vendedorDao.encontrePeloId(3);
 		
 		System.out.println(vendedor);
+		
+		System.out.println("\n=== teste 2 vendedor - encontre pelo departamento ===");
+		
+		Departamento depart = new Departamento(2, null);
+		List<Vendedor> lista = vendedorDao.encontrePeloDepartamento(depart);
+		
+		for (Vendedor obj : lista) {
+			System.out.println(obj);
+		}
 	}
 }
