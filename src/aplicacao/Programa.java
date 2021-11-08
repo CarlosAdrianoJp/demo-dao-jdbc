@@ -24,10 +24,14 @@ public class Programa {
 		System.out.println(vendedor);
 		
 		System.out.println("\n=== teste 2 vendedor - encontre pelo departamento ===");
-		
 		Departamento depart = new Departamento(2, null);
 		List<Vendedor> lista = vendedorDao.encontrePeloDepartamento(depart);
+		for (Vendedor obj : lista) {
+			System.out.println(obj);
+		}
 		
+		System.out.println("\n=== teste 3 vendedor - encontre todos ===");
+		lista = vendedorDao.encontreTudo();
 		for (Vendedor obj : lista) {
 			System.out.println(obj);
 		}
