@@ -45,7 +45,7 @@ public class VendedorDaoJDBC implements VendedorDao {
 				// rs
 				ResultSet rs = st.getGeneratedKeys();
 				if (rs.next()) {
-					// vale lembrar que esse 1 referese ao resut setque pegou o id
+					// vale lembrar que esse 1 referese ao resut set que pegou o id
 					// nao e o 1 que adiciona um novo vendedor
 					int id = rs.getInt(1);
 					obj.setId(id);
@@ -206,7 +206,7 @@ public class VendedorDaoJDBC implements VendedorDao {
 			// departamento
 			List<Vendedor> lista = new ArrayList<>();
 			// depois cria um map pra sempre colocar cada vendedor no mesmo departamento..
-			// no mais age esse map ta vazio
+			// no mais agr esse map ta vazio
 			Map<Integer, Departamento> map = new HashMap<>();
 			// percorrendo o map
 			while (rs.next()) {

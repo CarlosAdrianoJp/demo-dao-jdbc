@@ -107,6 +107,11 @@ public class Vendedor implements Serializable {
 		return "Vendedor [id= " + id + ", nome= " + nome + ", email= " + email + ", dataNiver= " + dataNiver
 				+ ", SalarioBase= " + SalarioBase + ", departamento= " + departamento + "]";
 	}
+	
+	public String mostrarVendedor() {
+		return "Vendedor [id= " + id + ", nome= " + nome + ", email= " + email + ", dataNiver= " + dataNiver
+				+ ", SalarioBase= " + SalarioBase ;
+	}
 
 	
 	
